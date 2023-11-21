@@ -145,7 +145,7 @@ class _GamePageState extends State<GamePage> {
                                       style: TextStyle(
                                         shadows: [
                                           Shadow(
-                                            color: Colors.brown.shade900,
+                                            color: Colors.white,
                                             blurRadius: 30,
                                           ),
                                           Shadow(
@@ -158,7 +158,7 @@ class _GamePageState extends State<GamePage> {
                                           ),
                                         ],
                                         letterSpacing: 1.5,
-                                        color: Colors.yellow.shade800,
+                                        color: Colors.white,
                                         fontWeight: FontWeight.w900,
                                         fontSize: 30,
                                       ),
