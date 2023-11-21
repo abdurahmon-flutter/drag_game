@@ -3,6 +3,9 @@ import 'package:drag_game/russian_page.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
+import 'data/global.dart';
+import 'game_page.dart';
+
 class OrHomePage extends StatefulWidget {
   static final String route = 'orginal';
 
@@ -29,7 +32,7 @@ class _OrHomePageState extends State<OrHomePage> {
               padding: EdgeInsets.all(0),
               alignment: Alignment.center,
               width: double.infinity,
-              child: Text('Drag Quiz',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 60,fontFamily: 'Billabong',color: Colors.white),),
+              child: Text('Funny Drag Quiz',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 60,fontFamily: 'Billabong',color: Colors.white),),
             ),
             Expanded(
               child: ListView(
@@ -48,7 +51,9 @@ class _OrHomePageState extends State<OrHomePage> {
                   ),
                   InkWell(
                     onTap: () {
-
+                      Global.image = 'assets/images/background.jpg';
+                      Global.list = Global.MathQuiz;
+                      Navigator.pushNamed(context, GamePage.route);
                     },
                     child: gameContainer('Math Quiz', 'assets/images/math.jpg'),
                   ),

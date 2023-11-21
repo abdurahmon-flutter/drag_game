@@ -66,16 +66,16 @@ class Global {
     Content(value: 'Ten', image: 'assets/images/animals/ten.jpg', isDropped: false),
   ];
   static List<Content> RussianNumbers=[
-    Content(value: 'Two', image: 'assets/images/animals/two.jpg', isDropped: false),
-    Content(value: 'Four', image: 'assets/images/animals/four.jpg', isDropped: false),
-    Content(value: 'Six', image: 'assets/images/animals/six.jpg', isDropped: false),
-    Content(value: 'Eight', image: 'assets/images/animals/eight.jpg', isDropped: false),
-    Content(value: 'Ten', image: 'assets/images/animals/ten.jpg', isDropped: false),
+    Content(value: 'два', image: 'assets/images/animals/two.jpg', isDropped: false),
+    Content(value: 'четыре', image: 'assets/images/animals/four.jpg', isDropped: false),
+    Content(value: 'шесть', image: 'assets/images/animals/six.jpg', isDropped: false),
+    Content(value: 'восемь', image: 'assets/images/animals/eight.jpg', isDropped: false),
+    Content(value: 'десять', image: 'assets/images/animals/ten.jpg', isDropped: false),
   ];
   static List<Content> MathQuiz=[
     Content(value: '132+807', image: 'assets/images/animals/999.jpg', isDropped: false),
     Content(value: '50-35', image: 'assets/images/animals/15.jpg', isDropped: false),
-    Content(value: '7-1', image: 'assets/images/animals/6.jpg', isDropped: false),
+    Content(value: '7-1', image: 'assets/images/animals/six.jpg', isDropped: false),
     Content(value: '16+44', image: 'assets/images/animals/60.jpg', isDropped: false),
     Content(value: '25*25', image: 'assets/images/animals/625.jpg', isDropped: false),
   ];

@@ -24,10 +24,11 @@ class _RussianPageState extends State<RussianPage> {
         child: Column(
           children: [
             Container(
-              height: 120,
-              width: 120,
-              child: Lottie.asset('assets/jsons/appbar.json'),
-
+              height: 100,
+              padding: EdgeInsets.all(0),
+              alignment: Alignment.center,
+              width: double.infinity,
+              child: Text('Funny Drag Quiz',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 60,fontFamily: 'Billabong',color: Colors.white),),
             ),
             Expanded(
               child: ListView(

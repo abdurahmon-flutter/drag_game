@@ -26,11 +26,11 @@ class _HomePageState extends State<HomePage> {
         child: Column(
           children: [
             Container(
+              height: 100,
+              padding: EdgeInsets.all(0),
               alignment: Alignment.center,
-              padding: EdgeInsets.zero,
-              height: 150,
-              width: 150,
-              child: Lottie.asset('assets/jsons/appbar.json'),
+              width: double.infinity,
+              child: Text('Funny Drag Quiz',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 60,fontFamily: 'Billabong',color: Colors.white),),
             ),
             Expanded(
               child: ListView(

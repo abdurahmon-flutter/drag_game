@@ -2,6 +2,7 @@ import 'package:drag_game/data/global.dart';
 import 'package:drag_game/home_english_page.dart';
 import 'package:drag_game/orginal_home_page.dart';
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 
 import 'data/model-data.dart';
 
@@ -16,7 +17,7 @@ class GamePage extends StatefulWidget {
 
 class _GamePageState extends State<GamePage> {
   int score = 0;
-  int gameover = 0;
+  int gameOver = 0;
   List<Content> list2 = [];
 
   @override
@@ -51,11 +52,11 @@ class _GamePageState extends State<GamePage> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Container(
-                height: 50,
+                height: 60,
                 width: double.infinity,
                 alignment: Alignment.center,
                 child: Text(
-                  'Drag Quiz',
+                  'Funny Drag Quiz',
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 50,
@@ -119,58 +120,13 @@ class _GamePageState extends State<GamePage> {
                                         }
                                         list2[i].isDropped = true;
                                         score += 10;
-                                        gameover++;
-                                        if (gameover == Global.list.length) {
+                                        gameOver++;
+                                        if (gameOver == Global.list.length) {
                                           showDialog(
                                             context: context,
                                             barrierDismissible: false,
                                             builder: (context) {
-                                              return AlertDialog(
-                                                backgroundColor: Colors.black54,
-                                                title: Container(
-                                                  child: Text(
-                                                    'You Win!',
-                                                    style: TextStyle(
-                                                        color: Colors.white,
-                                                        fontSize: 30,
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                        fontFamily:
-                                                            'Billabong'),
-                                                  ),
-                                                  alignment: Alignment.center,
-                                                ),
-                                                content: Container(
-                                                  child: Text(
-                                                    'Your score is $score',
-                                                    style: TextStyle(
-                                                        color: Colors.white,
-                                                        fontSize: 20,
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                        fontFamily:
-                                                            'Billabong'),
-                                                  ),
-                                                ),
-                                                actions: [
-                                                  TextButton(
-                                                    onPressed: () {
-                                                      Navigator
-                                                        .pushNamedAndRemoveUntil(context, OrHomePage.route, (route) => false);
-                                                    },
-                                                    child: Text(
-                                                      'Exit',
-                                                      style: TextStyle(
-                                                        color: Colors.white,
-                                                        fontFamily: 'Billabong',
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                        fontSize: 20,
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ],
-                                              );
+                                              return dialog();
                                             },
                                           );
                                         }
@@ -233,6 +189,95 @@ class _GamePageState extends State<GamePage> {
           ),
         ),
       ),
+    );
+  }
+
+  dialog() {
+    return AlertDialog(
+      shape: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(30),
+      ),
+      backgroundColor: Colors.white.withOpacity(0.6),
+      title: Center(child: Lottie.asset('assets/jsons/text.json')),
+      content: Container(
+        height: 150,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Container(
+              height: 100,
+              child: Lottie.asset('assets/jsons/winner.json'),
+            ),
+            Container(
+              padding: EdgeInsets.zero,
+              height: 50,
+              child: Text(
+                textAlign: TextAlign.center,
+                "Your score:$score",
+                style: TextStyle(
+                    color: Colors.black.withOpacity(0.7),
+                    fontWeight: FontWeight.bold,
+                    fontSize: 30),
+              ),
+            )
+          ],
+        ),
+      ),
+      actions: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Container(
+              padding: EdgeInsets.all(10),
+              child: OutlinedButton(
+                style: OutlinedButton.styleFrom(
+                    shape: StadiumBorder(),
+                    padding: EdgeInsets.symmetric(vertical: 12)),
+                onPressed: () {
+                  Navigator.of(context).pushNamedAndRemoveUntil(
+                      OrHomePage.route, (route) => false);
+                },
+                child: Icon(
+                  Icons.home,
+                  color: Colors.brown.shade700,
+                ),
+              ),
+            ),
+            Container(
+              padding: EdgeInsets.all(10),
+              child: OutlinedButton(
+                style: OutlinedButton.styleFrom(
+                    shape: StadiumBorder(),
+                    padding:
+                        EdgeInsets.symmetric(horizontal: 25, vertical: 12)),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                  setState(() {
+                    Global.list.shuffle();
+                    list2.shuffle();
+                    for (var e in Global.list) {
+                      e.isDropped = false;
+                    }
+                    for (var e in list2) {
+                      e.isDropped = false;
+                    }
+                    score = 0;
+                    gameOver = 0;
+                  });
+                },
+                child: Text(
+                  "Restart",
+                  style: TextStyle(
+                      fontSize: 20,
+                      color: Colors.brown.shade700,
+                      fontWeight: FontWeight.bold),
+                ),
+              ),
+            )
+          ],
+        )
+      ],
     );
   }
 }
